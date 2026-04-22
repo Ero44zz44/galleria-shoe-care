@@ -54,29 +54,15 @@ export default function Hero() {
             </motion.span>
           </span>
 
-          {/* Line 2 — gold with shimmer sweep */}
+          {/* Line 2 — gold, fades in from dim to full color */}
           <span className="block overflow-hidden">
             <motion.span
-              className="relative inline-block text-[#C9A668]"
-              initial={{ y: "110%" }}
-              animate={{ y: "0%" }}
+              className="block text-[#C9A668]"
+              initial={{ y: "110%", opacity: 0.4 }}
+              animate={{ y: "0%", opacity: 1 }}
               transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] as [number,number,number,number], delay: 0.22 }}
             >
               your luxuries
-              {/* One-time shimmer sweep after reveal */}
-              <motion.span
-                aria-hidden
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(90deg, transparent 0%, rgba(232,201,138,0.55) 50%, transparent 100%)",
-                  backgroundSize: "60% 100%",
-                  backgroundRepeat: "no-repeat",
-                }}
-                initial={{ backgroundPosition: "-60% 0" }}
-                animate={{ backgroundPosition: "160% 0" }}
-                transition={{ duration: 1.1, ease: "easeInOut", delay: 1.1 }}
-              />
             </motion.span>
           </span>
 
