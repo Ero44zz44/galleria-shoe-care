@@ -33,9 +33,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Thin horizontal gold lines — decorative */}
-      <div className="absolute top-[30%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A668]/10 to-transparent pointer-events-none" />
-      <div className="absolute bottom-[30%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A668]/8 to-transparent pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Overline */}
