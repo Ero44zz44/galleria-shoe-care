@@ -1,26 +1,157 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* shadcn tokens */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Brand fonts — set by next/font on <html> */
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  --font-heading: var(--font-playfair);
+
+  /* Brand color tokens */
+  --color-brand-black: #0A0A0A;
+  --color-brand-brown: #8B5A2B;
+  --color-brand-gold: #C9A668;
+  --color-brand-gold-light: #E8C98A;
+  --color-brand-text: #F5F1EA;
+  --color-brand-card: #111111;
+  --color-brand-border: #2A2A2A;
+  --color-brand-muted: #8A8478;
+  --color-brand-surface: #161616;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: #0A0A0A;
+  --foreground: #F5F1EA;
+  --card: #111111;
+  --card-foreground: #F5F1EA;
+  --popover: #111111;
+  --popover-foreground: #F5F1EA;
+  --primary: #C9A668;
+  --primary-foreground: #0A0A0A;
+  --secondary: #161616;
+  --secondary-foreground: #F5F1EA;
+  --muted: #1A1A1A;
+  --muted-foreground: #8A8478;
+  --accent: #8B5A2B;
+  --accent-foreground: #F5F1EA;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #2A2A2A;
+  --input: #1A1A1A;
+  --ring: #C9A668;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.5rem;
+  --sidebar: #111111;
+  --sidebar-foreground: #F5F1EA;
+  --sidebar-primary: #C9A668;
+  --sidebar-primary-foreground: #0A0A0A;
+  --sidebar-accent: #1A1A1A;
+  --sidebar-accent-foreground: #F5F1EA;
+  --sidebar-border: #2A2A2A;
+  --sidebar-ring: #C9A668;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    background-color: #0A0A0A;
+    color: #F5F1EA;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Gold shimmer button hover effect */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.btn-gold {
+  background: #C9A668;
+  color: #0A0A0A;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(
+    90deg,
+    #8B5A2B 0%,
+    #C9A668 25%,
+    #E8C98A 50%,
+    #C9A668 75%,
+    #8B5A2B 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 1.6s linear infinite;
+  box-shadow: 0 0 24px rgba(201, 166, 104, 0.35);
+}
+
+/* Thin gold rule used as decorative divider */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C9A668, transparent);
+}
+
+/* Editorial overline */
+.overline {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #C9A668;
 }
