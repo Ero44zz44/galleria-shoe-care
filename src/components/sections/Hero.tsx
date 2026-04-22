@@ -43,17 +43,58 @@ export default function Hero() {
           Glendale Galleria · Est. Since 2000
         </motion.p>
 
-        {/* Headline */}
-        <motion.h1
-          className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[88px] font-bold leading-[1.05] tracking-[-0.01em] text-[#F5F1EA] mb-6"
-          {...fadeUpProps(0.15)}
-        >
-          Craftsmanship
-          <br />
-          <span className="text-[#C9A668]">your luxuries</span>
-          <br />
-          deserve.
-        </motion.h1>
+        {/* Headline — line-by-line clip reveal */}
+        <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[88px] font-bold leading-[1.1] tracking-[-0.01em] text-[#F5F1EA] mb-6">
+          {/* Line 1 */}
+          <span className="block overflow-hidden">
+            <motion.span
+              className="block"
+              initial={{ y: "110%" }}
+              animate={{ y: "0%" }}
+              transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] as [number,number,number,number], delay: 0.1 }}
+            >
+              Craftsmanship
+            </motion.span>
+          </span>
+
+          {/* Line 2 — gold with shimmer sweep */}
+          <span className="block overflow-hidden">
+            <motion.span
+              className="relative inline-block text-[#C9A668]"
+              initial={{ y: "110%" }}
+              animate={{ y: "0%" }}
+              transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] as [number,number,number,number], delay: 0.22 }}
+            >
+              your luxuries
+              {/* One-time shimmer sweep after reveal */}
+              <motion.span
+                aria-hidden
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent 0%, rgba(232,201,138,0.55) 50%, transparent 100%)",
+                  backgroundSize: "60% 100%",
+                  backgroundRepeat: "no-repeat",
+                }}
+                initial={{ backgroundPosition: "-60% 0" }}
+                animate={{ backgroundPosition: "160% 0" }}
+                transition={{ duration: 1.1, ease: "easeInOut", delay: 1.1 }}
+              />
+            </motion.span>
+          </span>
+
+          {/* Line 3 */}
+          <span className="block overflow-hidden">
+            <motion.span
+              className="block"
+              initial={{ y: "110%" }}
+              animate={{ y: "0%" }}
+              transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1] as [number,number,number,number], delay: 0.34 }}
+            >
+              deserve.
+            </motion.span>
+          </span>
+        </h1>
 
         {/* Gold rule */}
         <motion.div
